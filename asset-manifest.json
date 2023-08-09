@@ -1,13 +1,16 @@
 {
   "files": {
-    "main.css": "/questify/static/css/main.7acaea2f.css",
-    "main.js": "/questify/static/js/main.07d3183d.js",
+    "main.css": "/questify/static/css/main.c525f634.css",
+    "main.js": "/questify/static/js/main.eb3c1987.js",
+    "static/media/pic2.png": "/questify/static/media/pic2.3a525d27c11a9f03cfd5.png",
+    "static/media/pic1.png": "/questify/static/media/pic1.39130077c65130174e45.png",
+    "static/media/HelveticaNeueCyr-Black.woff": "/questify/static/media/HelveticaNeueCyr-Black.b6ffcbe637880bfa2551.woff",
     "index.html": "/questify/index.html",
-    "main.7acaea2f.css.map": "/questify/static/css/main.7acaea2f.css.map",
-    "main.07d3183d.js.map": "/questify/static/js/main.07d3183d.js.map"
+    "main.c525f634.css.map": "/questify/static/css/main.c525f634.css.map",
+    "main.eb3c1987.js.map": "/questify/static/js/main.eb3c1987.js.map"
   },
   "entrypoints": [
-    "static/css/main.7acaea2f.css",
-    "static/js/main.07d3183d.js"
+    "static/css/main.c525f634.css",
+    "static/js/main.eb3c1987.js"
   ]
 }
