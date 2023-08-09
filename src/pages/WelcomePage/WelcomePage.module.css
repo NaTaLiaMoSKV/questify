@@ -1,0 +1,32 @@
+.welcomeTextContainer {
+    margin-left: 230px;
+    width: 570px;
+    position: relative;
+}
+
+.welcomeTextSubtitle {
+    color: #00D7FF;
+    margin-bottom: 50px;
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: 0.48px;
+}
+
+.welcomeTextTitle {
+    color: #15395A;
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 45px; 
+    letter-spacing: 0.72px;
+    margin-bottom: 35px;
+}
+
+.formLabel {
+    margin: 0;
+    color: #B9C3C8;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 45px;
+    letter-spacing: 0.48px;
+}

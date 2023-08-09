@@ -1,0 +1,90 @@
+.authForm {
+    background-color: #777777;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.authFormWrapper { 
+    position: relative;
+}
+
+.auth-form__error-message {
+    margin: 0;
+    color: #bab0b0;
+    font-size: 12px;
+}
+
+.errorMessage {
+    margin-top: 3px;
+    padding-left: 14px;
+    color: #c04d4d;
+    font-size: 12px;
+}
+
+.authFormField {
+    width: 350px;
+    height: 49px;
+    padding: 14px 18px;
+
+    font-size: 14px;
+    font-family: 'Helvetica Neue Cyr', sans-serif;
+    letter-spacing: -0.28px;
+
+    border: none;
+    border-bottom: 2px solid #00D7FF;
+
+    background: transparent;
+    outline: none;
+    transition: all 150ms ease;
+
+    opacity: 0.4; 
+}
+
+.authFormField::placeholder {
+    font-size: 14px;
+    font-family: 'Helvetica Neue Cyr', sans-serif;
+    letter-spacing: -0.28px;
+}
+
+.authFormField:focus {
+    opacity: 1;
+}
+
+.authFormIcon {
+    width: 25px;
+    position: absolute;
+    bottom: 15px;
+    right: 18px;
+    color: #00D7FF;
+    opacity: 0.4;
+    cursor: pointer;
+}
+
+.authFormSubmitButton {
+     display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 49px;
+    padding: 14px;
+    border: none;
+    margin-top: 10px;
+    background: #bedbb0;
+    border-radius: 8px;
+
+    font-family: 'Poppins';
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    text-align: center;
+    letter-spacing: -0.02em;
+    color: #161616;
+
+    transition: all 150ms linear;
+
+    cursor: pointer;
+}
+
+.authFormSubmitButton:hover {
+    opacity: 0.8;
+}
