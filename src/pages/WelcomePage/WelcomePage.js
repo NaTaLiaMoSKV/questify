@@ -1,8 +1,6 @@
-import { WelcomeContainer, WelcomeForm, WelcomeFormButton, WelcomeFormField } from "./WelcomePage.styled";
-import css from './WelcomePage.module.css'
+import { WelcomeContainer, WelcomeForm, WelcomeFormButton, WelcomeFormField, WelcomeFormLabel, WelcomeTextContainer, WelcomeTextSubtitle, WelcomeTextTitle } from "./WelcomePage.styled";
 import * as Yup from 'yup';
 import { Formik } from "formik";
-import { NavLink } from "react-router-dom";
 
 const validationSchema = Yup.object().shape({
     name: Yup.string().required('Name is required')
@@ -16,20 +14,20 @@ const initialValues = {
 
 export default function WelcomePage() {
 
-    const onFormSubmit =  (values, { resetForm }) => {
+    const onFormSubmit =  async (values, { resetForm }) => {
         const { name } = values;
+        await localStorage.setItem('userName', name);
         console.log('name: ', name);
-        
         resetForm();
     };
 
 
     return (
         <WelcomeContainer>
-            <div className={css.welcomeTextContainer}>
-                <p className={css.welcomeTextSubtitle}>Questify</p>
-                <h1 className={css.welcomeTextTitle}>Questify will turn your life into a thrilling game full of amazing quests and exciting challenges.</h1>
-                <p className={css.formLabel}>Choose your name to sign up or log in</p>
+            <WelcomeTextContainer>
+                <WelcomeTextSubtitle>Questify</WelcomeTextSubtitle>
+                <WelcomeTextTitle>Questify will turn your life into a thrilling game full of amazing quests and exciting challenges.</WelcomeTextTitle>
+                <WelcomeFormLabel>Choose your name to sign up or log in</WelcomeFormLabel>
         
                 <Formik
                     initialValues={initialValues}
@@ -40,15 +38,17 @@ export default function WelcomePage() {
                     {({ isValid, dirty }) => (
                         <WelcomeForm>
                             <WelcomeFormField type="name" id="name" name="name" />
-                            <NavLink to='auth/login' disabled={!isValid || !dirty}>
-                                <WelcomeFormButton type="submit" disabled={!isValid || !dirty}>
+                                <WelcomeFormButton type="submit" disabled={!isValid || !dirty} onClick={() => {
+                                    onFormSubmit();
+                                    window.location.href = '/questify/auth/login'; 
+                                    }}
+                                >
                                     go!
                                 </WelcomeFormButton>
-                            </NavLink>
                         </WelcomeForm>
                     )}
                 </Formik>
-            </div>
+            </WelcomeTextContainer>
             
         </WelcomeContainer>
     );

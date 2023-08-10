@@ -1,7 +1,9 @@
 import { styled } from "styled-components";
-import { NavLink } from "react-router-dom";
-import pic1 from '../../images/pic1.png'
-import pic2 from '../../images/pic2.png'
+
+import desktopPic1 from '../../images/pic1.png'
+import desktopPic2 from '../../images/pic2.png'
+import mobilePic1 from '../../images/mobile-landing-pic1.png'
+import mobilePic2 from '../../images/mobile-landing-pic2.png'
 import { Field, Form } from "formik";
 
 export const WelcomeContainer = styled.div`
@@ -10,40 +12,115 @@ export const WelcomeContainer = styled.div`
     width: 100vw;
     height: 100vh;
     position: relative;
-    background-color: #f0f0f0;
-    background-image: url(${pic1}), url(${pic2});
-    background-position: top right, bottom right;
-    background-size: auto 52%, auto 68%;
+    background-color: #FFF;
+    
+    background-image: url(${mobilePic2}), url(${mobilePic1});
+    background-color: rgba(255, 255, 255, 0.5);
+    background-blend-mode: normal, lighten; 
+    background-size: 70% auto, 130% auto;
+    background-position: bottom right, bottom right;
     background-repeat: no-repeat;
-`;
 
-export const WelcomeRegisterButton = styled(NavLink)`
-    padding: 18px 30px;
-    text-decoration: none;
-    color: #ffffff;
-    text-align: center;
-    font-size: 24px;
-    font-weight: 700;
-    letter-spacing: 0.48px;
-
-    border-radius: 18px;
-    background: #FF851C;
-
-    transition: all 150ms linear;
-    cursor: pointer;
-
-    &:hover {
-        opacity: 0.8;
+    @media screen and (min-width: 768px) {
+        background-image: url(${desktopPic1}), url(${desktopPic2});
+        background-blend-mode: normal; 
+        background-position: top right -180px, bottom right -180px;
+        background-size: auto 52%, auto 68%;
     }
 
+    @media screen and (min-width: 1200px) {
+        background-position: top right, bottom right;
+    }
 `;
 
+export const WelcomeTextContainer = styled.div`
+    width: calc(100% - 40px);
+    padding: 0 20px;
+    position: relative;
+
+    @media screen and (min-width: 480px) {
+        width: 375px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    @media screen and (min-width: 768px) {
+        margin-left: 50px;
+        margin-right: 0;
+    }
+
+    @media screen and (min-width: 1200px) {
+        padding: 0;
+        margin-left: 230px;
+        width: 562px;
+    }
+
+`
+
+export const WelcomeTextSubtitle = styled.p`
+    color: #00D7FF;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: 0.48px;
+`
+export const WelcomeTextTitle = styled.h1`
+    color: #15395A;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 29px; 
+    letter-spacing: 0.36px;
+    margin-bottom: 32px;
+
+    @media screen and (min-width: 768px) {
+        font-size: 24px;
+        line-height: 33px;
+        letter-spacing: 0.48px;
+    }
+
+    @media screen and (min-width: 1200px) {
+        color: #15395A;
+        font-size: 36px;
+        line-height: 45px; 
+        letter-spacing: 0.72px;
+        margin-bottom: 35px;
+    }
+`
+
+export const WelcomeFormLabel = styled.p`
+    margin: 0;
+    color: #B9C3C8;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 45px;
+    letter-spacing: 0.28px;
+
+
+    @media screen and (min-width: 768px) {
+        font-size: 18px;
+        letter-spacing: 0.36px;
+    }
+
+    @media screen and (min-width: 1200px) {
+        font-size: 24px;
+        letter-spacing: 0.48px;
+    }
+`
+
 export const WelcomeForm = styled(Form)`
-    position: absolute;
-    bottom: 0;
-    right: -110px;
+    margin-top: 32px;
     display: flex;
     align-items: center;
+    gap: 12px;
+
+    @media screen and (min-width: 1200px) {
+        position: absolute;
+        bottom: 0;
+        right: -140px;
+        display: flex;
+        align-items: center;
+    }
 `
 
 export const WelcomeFormField = styled(Field)`
@@ -81,7 +158,7 @@ export const WelcomeFormButton = styled.button`
     color: #FFF;
     text-align: center;
     font-family: 'Helvetica Neue Cyr', sans-serif;
-    font-size: 24px;
+    font-size: 22px;
     font-weight: 700;
     letter-spacing: 0.48px;
     z-index: 10;
@@ -100,5 +177,4 @@ export const WelcomeFormButton = styled.button`
         z-index: -1;
     }
     cursor: pointer;
-
 `

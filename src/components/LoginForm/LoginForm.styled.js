@@ -3,8 +3,27 @@ import { Form, Field, ErrorMessage } from 'formik';
 import { NavLink } from 'react-router-dom';
 
 export const AuthContainer = styled.div`
-    margin-left:230px;
-    display: block;
+    width: calc(100% - 40px);
+    padding: 0 20px;
+    position: relative;
+
+    @media screen and (min-width: 480px) {
+        width: 375px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    @media screen and (min-width: 768px) {
+        margin-left: 50px;
+        margin-right: 0;
+    }
+
+    @media screen and (min-width: 1200px) {
+        padding: 0;
+        margin-left: 230px;
+        width: 562px;
+    }
+
 `
 
 export const HelloText = styled.h2`
@@ -16,12 +35,8 @@ export const HelloText = styled.h2`
 
 export const AuthFormWrapper = styled.div`
     position: relative;
-
-    div {
-        margin: 0;
-        color: rgb(236, 68, 68);
-        font-size: 14px;
-    }
+    width: 100%;
+    max-width: 350px;
 `;
 
 export const AuthForm = styled(Form)`
@@ -33,7 +48,7 @@ export const AuthForm = styled(Form)`
 export const ErrorSection = styled(ErrorMessage)``;
 
 export const AuthFormField = styled(Field)`
-    width: 350px;
+    width: 100%;
     height: 49px;
     margin-bottom: 10px;
     margin-top: 30px;

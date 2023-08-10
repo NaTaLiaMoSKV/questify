@@ -80,6 +80,7 @@ export const logIn = createAsyncThunk(
 export const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
   try {
     await instance.post('auth/logout');
+    localStorage.clear('userName');
     localStorage.clear('refreshToken');
     localStorage.clear('accessToken');
     unsetAuthHeader();

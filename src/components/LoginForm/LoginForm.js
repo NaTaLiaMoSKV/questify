@@ -1,5 +1,4 @@
 import { useState } from 'react';
-// import { useDispatch, useSelector } from 'react-redux';
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 import {
     AuthContainer,
@@ -18,8 +17,6 @@ import { Formik } from 'formik';
 import * as Yup from 'yup';
 
 import { logIn } from 'redux/auth/authOperations';
-// import Loader from 'components/Loader/Loader';
-// import { selectIsLoading } from 'redux/auth/authSelectors';
 import { toast } from 'react-toastify';
 import { useDispatch } from 'react-redux';
 

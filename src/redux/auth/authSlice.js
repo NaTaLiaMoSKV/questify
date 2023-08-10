@@ -17,9 +17,9 @@ const handleRejected = (state, action) => {
 
 const initialState = {
     user: {
-        name: null,
         email: null,
     },
+    name: null,
     token: null,
     isLoggedIn: false,
     isLoading: false,
@@ -35,6 +35,7 @@ const authSlice = createSlice({
       .addCase(register.pending, handlePending)
       .addCase(register.rejected, handleRejected)
       .addCase(register.fulfilled, (state, action) => {
+        state.name = localStorage.getItem('userName');
         state.user = action.payload.user;
         state.isLoggedIn = true;
         state.isLoading = false;
@@ -43,6 +44,7 @@ const authSlice = createSlice({
       .addCase(logIn.pending, handlePending)
       .addCase(logIn.rejected, handleRejected)
       .addCase(logIn.fulfilled, (state, action) => {
+        state.name = localStorage.getItem('userName');
         state.user = action.payload.user;
         state.token = action.payload.accessToken;
         state.isLoggedIn = true;
@@ -51,26 +53,22 @@ const authSlice = createSlice({
 
       .addCase(logOut.fulfilled, state => {
         state.user = { name: null, email: null };
+        state.name = null;
         state.token = null;
         state.isLoggedIn = false;
       })
 
-        .addCase(refreshCurrentUser.pending, state => {
-          
-        //   console.log('refreshing')
+      .addCase(refreshCurrentUser.pending, state => {
         state.isRefreshing = true;
       })
         
-        .addCase(refreshCurrentUser.fulfilled, (state, action) => {
-          
-        //   console.log('refreshing!')
+      .addCase(refreshCurrentUser.fulfilled, (state, action) => {
         state.user = action.payload.user;
         state.isLoggedIn = true;
         state.isRefreshing = false;
       })
         
-        .addCase(refreshCurrentUser.rejected, state => {
-        //   console.log('refreshing!!')
+      .addCase(refreshCurrentUser.rejected, state => {
         state.isRefreshing = false;
       })
 
