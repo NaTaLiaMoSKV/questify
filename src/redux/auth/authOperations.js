@@ -40,6 +40,11 @@ instance.interceptors.response.use(
   }
 );
 
+export const setIsEditingCard = (isEditing) => ({
+  type: 'auth/editing',
+  payload: isEditing,
+});
+
 export const register = createAsyncThunk(
   'auth/register',
   async (credentials, thunkAPI) => {
@@ -67,6 +72,7 @@ export const logIn = createAsyncThunk(
     try {
       const { data } = await instance.post('auth/login', credentials);
       setAuthHeader(data.accessToken);
+      localStorage.setItem('cards', JSON.stringify(data.userData.cards));
       localStorage.setItem('refreshToken', data.refreshToken);
       localStorage.setItem('accessToken', data.accessToken);
       localStorage.setItem('sid', data.sid);
@@ -80,6 +86,7 @@ export const logIn = createAsyncThunk(
 export const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
   try {
     await instance.post('auth/logout');
+    localStorage.clear('cards');
     localStorage.clear('userName');
     localStorage.clear('refreshToken');
     localStorage.clear('accessToken');
@@ -99,7 +106,7 @@ export const refreshCurrentUser = createAsyncThunk(
       return thunkAPI.rejectWithValue('Unable to fetch user');
     }
     try {
-        const { data } = await instance.post('auth/refresh', { sid });
+      const { data } = await instance.post('auth/refresh', { sid });
       setAuthHeader(data.newAccessToken);
       localStorage.setItem('refreshToken', data.newRefreshToken);
       localStorage.setItem('accessToken', data.newAccessToken);

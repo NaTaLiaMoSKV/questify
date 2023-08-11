@@ -1,5 +1,6 @@
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 import { authReducer } from './auth/authSlice';
+import { cardReducer } from './card/cardSlice';
 import {
     persistStore,
     persistReducer,
@@ -30,6 +31,7 @@ const middleware = [
 export const store = configureStore({
     reducer: {
         auth: persistReducer(authPersistConfig, authReducer),
+        card: cardReducer,
     },
     middleware,
     devTools: process.env.NODE_ENV === 'development',

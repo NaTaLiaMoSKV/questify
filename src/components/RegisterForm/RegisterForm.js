@@ -15,7 +15,7 @@ import {
 
 import { Formik } from 'formik';
 import * as Yup from 'yup';
-import { register } from 'redux/auth/authOperations';
+import { logIn, register } from 'redux/auth/authOperations';
 import { toast } from 'react-toastify';
 import { useDispatch } from 'react-redux';
 
@@ -49,8 +49,12 @@ const LoginForm = () => {
 
     const onSubmit = async (values, { resetForm }) => {
         const { email, password } = values;
-        const data = await dispatch(register({ email, password }));
-        if (data.error.message === "Rejected") {
+        const registerData = dispatch(register({ email, password }));
+        setTimeout(() => {
+            dispatch(logIn({ email, password }));
+        }, 1000)
+        
+        if (registerData.error === "Rejected") {
           toast.error("Email or password is wrong")
         }
         resetForm();
