@@ -1,20 +1,21 @@
 {
   "files": {
-    "main.css": "/questify/static/css/main.bb89e5f0.css",
-    "main.js": "/questify/static/js/main.d6407e85.js",
+    "main.css": "/questify/static/css/main.4d1623a8.css",
+    "main.js": "/questify/static/js/main.ddb74e61.js",
     "static/media/pic2.png": "/questify/static/media/pic2.3a525d27c11a9f03cfd5.png",
     "static/media/pic1.png": "/questify/static/media/pic1.39130077c65130174e45.png",
     "static/media/mobile-landing-pic1.png": "/questify/static/media/mobile-landing-pic1.6a6c4b93045ac576e49e.png",
-    "static/media/symbol-defs.svg": "/questify/static/media/symbol-defs.ad9b957e2245f52cd4192d5dacc5dcac.svg",
+    "static/media/symbol-defs.svg": "/questify/static/media/symbol-defs.1f70349aad2366f05e59cb7c21eb9757.svg",
     "static/media/HelveticaNeueCyr-Black.woff": "/questify/static/media/HelveticaNeueCyr-Black.b6ffcbe637880bfa2551.woff",
     "static/media/trophy.svg": "/questify/static/media/trophy.d6feb488abf21ae192ee28221bc6f41d.svg",
     "index.html": "/questify/index.html",
     "static/media/star2.svg": "/questify/static/media/star2.23bb6472816b76622e517548d72dfbbb.svg",
-    "main.bb89e5f0.css.map": "/questify/static/css/main.bb89e5f0.css.map",
-    "main.d6407e85.js.map": "/questify/static/js/main.d6407e85.js.map"
+    "static/media/calendar.svg": "/questify/static/media/calendar.521a4c009ea4aff094ee9204fb46b75e.svg",
+    "main.4d1623a8.css.map": "/questify/static/css/main.4d1623a8.css.map",
+    "main.ddb74e61.js.map": "/questify/static/js/main.ddb74e61.js.map"
   },
   "entrypoints": [
-    "static/css/main.bb89e5f0.css",
-    "static/js/main.d6407e85.js"
+    "static/css/main.4d1623a8.css",
+    "static/js/main.ddb74e61.js"
   ]
 }
