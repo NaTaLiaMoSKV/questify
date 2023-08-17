@@ -28,6 +28,23 @@ export const CardsSection = styled.div`
 
 `
 
+export const EmptyTextContainer = styled.div`
+    position: relative;
+    width: 300px;
+    margin: 30px auto;
+`
+
+export const EmptyText = styled.p`
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    font-family: 'Helvetica Neue Cyr';
+    font-weight: 600;    
+`
+
 export const AddCardButton = styled.button`
     position: sticky;
     bottom: 10px;
@@ -37,8 +54,11 @@ export const AddCardButton = styled.button`
     background-color: #FF851C;
     border: none;
     border-radius: 50%;
-    padding: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
+    padding: 13px;
 `
 
 export const AddCardIcon = styled.svg`

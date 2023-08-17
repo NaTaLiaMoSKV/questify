@@ -7,6 +7,7 @@
     font-weight: 400;
     line-height: normal;
     letter-spacing: 0.28px;
+    display: none;
 }
 
 .tooltipExit {
@@ -18,4 +19,16 @@
     font-weight: 400;
     line-height: normal;
     letter-spacing: 0.28px;
+    display: none;
 }
+
+@media screen and (min-width: 768px) {
+    .tooltip {
+        display: block;
+    }
+
+    .tooltipExit {
+        display: block;
+    }
+}
+

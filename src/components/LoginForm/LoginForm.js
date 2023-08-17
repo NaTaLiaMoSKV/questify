@@ -60,7 +60,7 @@ const LoginForm = () => {
 
     return (
         <AuthContainer>
-            <HelloText>Hi, {userName}!-</HelloText>
+            <HelloText>Hi, {userName}!</HelloText>
             <Formik
             initialValues={initialValues}
             validationSchema={validationSchema}
@@ -88,7 +88,7 @@ const LoginForm = () => {
                         
                     <ErrorSection name="password" component="div" />
                     <AuthFormPasswordIcon onClick={handleTogglePassword}>
-                        {showPassword ? <AiOutlineEyeInvisible style={{width: '25px', height: '25px'}}/> : <AiOutlineEye style={{width: '25px', height: '25px'}} />}
+                        {showPassword ? <AiOutlineEye style={{width: '25px', height: '25px'}}/> : <AiOutlineEyeInvisible style={{width: '25px', height: '25px'}} />}
                     </AuthFormPasswordIcon>
                     </AuthFormWrapper>
                     

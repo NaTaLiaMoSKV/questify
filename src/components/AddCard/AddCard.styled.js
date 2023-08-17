@@ -1,4 +1,5 @@
 import { styled } from "styled-components";
+import calendarImage from '../../images/calendar.svg'
 
 export const CardWrapper = styled.div`
     width: 100%;
@@ -327,6 +328,7 @@ export const CalendarPickerContainer = styled.div`
     position: relative;
     margin-top: 10px;
     display: flex;
+    align-items: center;
     max-height: 250px;
 `
 
@@ -338,24 +340,34 @@ export const CalendarPickerText = styled.p`
 
 export const CalendarPickerInput = styled.input`
     width: 18px;
+    height: 20px;
     color: transparent;
     border: none;
     outline: none;
-    
+    background-color: transparent;
+    position: relative;
+    margin-left: 8px;
+    cursor: pointer;
 
-    &::placeholder {
-        color: #282828;
-        font-family: 'Helvetica Neue Cyr', sans-serif;
-        font-size: 14px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: normal;
-        letter-spacing: 0.28px;
-        opacity: 1;
-    }
-
+    &::-webkit-inner-spin-button,
     &::-webkit-calendar-picker-indicator {
         cursor: pointer;
+        z-index: 600;
+        opacity: 0;
+    }
+    
+    &::after {
+        pointer-event:none;
+        position: absolute;
+        width: 15px;
+        height: 20px;
+        background-color: #fff;
+        background-image: url(${calendarImage});
+        background-blend-mode: normal; 
+        background-position: cover;
+        background-size: 100% auto;
+        background-repeat: no-repeat;
+        content: '';
     }
 `
 
@@ -386,6 +398,7 @@ export const ButtonsContainer = styled.div`
     display: flex;
     width: 100%;
     justify-content: right;
+    align-items: center;
 
 `
 
@@ -393,6 +406,7 @@ export const CancelButton = styled.button`
     cursor: pointer;
     width: 25px;
     height: 25px;
+    padding: 0 5px;
     border: none;
     background-color: transparent;
 `

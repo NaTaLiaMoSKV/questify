@@ -16,14 +16,15 @@ export default function Cards() {
     const tomorrow = new Date();
     tomorrow.setDate(today.getDate() + 1);
 
-
     return (
         <>
             {/* EDITING CARD */}
             {isEditingCard && !cards.find(card => card.status === 'Incomplete' && new Date(card.date).toDateString() === today.toDateString()) && (
-                <Card>
-                    <AddCard />
-                </Card>
+                <CardsContainer>
+                    <Card>
+                        <AddCard />
+                    </Card>
+                </CardsContainer>
             )}
 
             {/* TODAY CARDS */}
@@ -56,15 +57,15 @@ export default function Cards() {
             {cards.find(card => card.status === 'Incomplete' && new Date(card.date).toDateString() === tomorrow.toDateString()) && (
                 <>
                     <CardContainerTitle>Tomorrow:</CardContainerTitle>
-                        <CardsContainer>
-                            {cards !== undefined &&
-                                cards
-                                    .filter(card => card.status === 'Incomplete' && new Date(card.date).toDateString() === tomorrow.toDateString()).map((card) => (                            
-                                        <CardItem
-                                            key={card._id}
-                                            card={card}
-                                        />
-                                    ))
+                    <CardsContainer>
+                        {cards !== undefined &&
+                            cards
+                                .filter(card => card.status === 'Incomplete' && new Date(card.date).toDateString() === tomorrow.toDateString()).map((card) => (                            
+                                    <CardItem
+                                        key={card._id}
+                                        card={card}
+                                    />
+                                ))
                             }
                     </CardsContainer>
                 </>

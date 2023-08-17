@@ -157,6 +157,9 @@ export const WelcomeFormButton = styled.button`
     margin-left: 20px;
     width: 52px;
     height: 52px;
+    display: flex;
+    justify-content:center;
+    align-items: center;
     background-color: #FF851C;
     border: none;
     border-radius: 50%;
@@ -170,7 +173,7 @@ export const WelcomeFormButton = styled.button`
     z-index: 10;
 
     &::before {
-         content: '';
+        content: '';
         position: absolute;
         width: 52px;
         height: 52px;
