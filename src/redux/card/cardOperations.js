@@ -6,8 +6,6 @@ export const getAllCards = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const { data } = await instance.get('card');
-      console.log('cards:');
-      console.log(data);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -30,7 +28,7 @@ export const addCard = createAsyncThunk(
 
       return data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error.response.data.message);
     }
   }
 );
@@ -39,26 +37,13 @@ export const deleteCard = createAsyncThunk(
   'card/deleteCard',
   async (cardId, thunkAPI) => {
     try {
-      const { data } = await instance.delete(`card/${cardId}`);
-      return data;
+      await instance.delete(`card/${cardId}`);
+      return { cardId };
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
-
-// export const getCardById  = createAsyncThunk(
-//   'dashboards/getById',
-//   async (dashboardId, thunkAPI) => {
-//     try {
-//       const { data } = await instance.get(`api/dashboard/${dashboardId}`);
-
-//       return data;
-//     } catch (error) {
-//       return thunkAPI.rejectWithValue(error.message);
-//     }
-//   }
-// );
 
 export const editCard = createAsyncThunk(
   'card/editCard',
@@ -71,7 +56,7 @@ export const editCard = createAsyncThunk(
 
       return data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error.response.data.message);
     }
   }
 );

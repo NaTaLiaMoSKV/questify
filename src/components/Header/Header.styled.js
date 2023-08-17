@@ -11,6 +11,7 @@ export const HeaderContainer = styled.div`
     margin-right: auto;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding: 16px 20px;
     height: 60px;
 

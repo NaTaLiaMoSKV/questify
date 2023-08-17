@@ -14,11 +14,9 @@ const initialValues = {
 
 export default function WelcomePage() {
 
-    const onFormSubmit =  async (values, { resetForm }) => {
-        const { name } = values;
-        await localStorage.setItem('userName', name);
-        console.log('name: ', name);
-        resetForm();
+    const onFormSubmit = async (values) => {
+        const { name } = await values;
+        localStorage.setItem('userName', name);
     };
 
 

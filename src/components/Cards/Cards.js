@@ -1,115 +1,113 @@
-// import { useDispatch, useSelector } from "react-redux"
-// import 'react-datepicker/dist/react-datepicker.css';
-// import { selectAllCards } from "redux/card/cardSelectors"
-// // import css from './Cards.module.css'
-// import { CardsContainer, Card, CardTopContainer, CardDifficulty, CardTitle, CardDate, CardCategoryContainer, CardCategoryText } from './Cards.styled'
-
-// import starImage from '../../images/star.svg'
-// import { selectIsEditingCard } from "redux/auth/authSelectors";
-// import AddCard from "components/AddCard/AddCard";
-// import { editCard } from "redux/card/cardOperations";
-// import { useState } from "react";
-
-// export default function Cards() {
-//     const dispatch = useDispatch();
-//     const cards = useSelector(selectAllCards);
-//     const isEditingCard = useSelector(selectIsEditingCard);
-
-//     const onEditingCard = (editingCard) => {
-//         const cardId = editingCard._id;
-//         const card = {
-//             title: 'Wash bathroom'
-//         }
-//         const updatedCard = dispatch(editCard({ cardId, updatedData: card }))
-//         console.log(updatedCard);
-//     }
-
-//     return (
-//         <CardsContainer>
-//             {isEditingCard && <AddCard />}
-//             {cards !== undefined && cards.map(card => (
-//                 <Card onDoubleClick={() => onEditingCard(card)} key={card._id}>
-//                     <CardTopContainer>
-//                         <CardDifficulty text={card.difficulty}>{card.difficulty}</CardDifficulty>
-//                         <img src={starImage} alt='star' />
-//                     </CardTopContainer>
-//                     <CardTitle>{card.title}</CardTitle>
-//                     <CardDate>{card.date}, {card.time}</CardDate>
-//                     <CardCategoryContainer>
-//                         <CardCategoryText>{card.category}</CardCategoryText>
-//                     </CardCategoryContainer>
-//                 </Card>
-//             ))}
-//         </CardsContainer>
-           
-//     )
-// }
-
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import "react-datepicker/dist/react-datepicker.css";
-import { selectAllCards, selectUpdatingCard, selectUpdatingCardId } from "redux/card/cardSelectors";
-import { CardsContainer, Card, CardTopContainer, CardDifficulty, CardTitle, CardDate, CardCategoryContainer, CardCategoryText } from "./Cards.styled";
+import { selectAllCards } from "redux/card/cardSelectors";
+import { CardsContainer, Card, CardContainerTitle } from "./Cards.styled";
 
-import starImage from "../../images/star.svg";
-// import { selectIsEditingCard } from "redux/auth/authSelectors";
 import AddCard from "components/AddCard/AddCard";
-// import { selectEditingCardId} from "redux/card/cardSelectors";
-// import { addEditingCardId } from "redux/card/cardOperations";
 import { selectIsEditingCard } from "redux/auth/authSelectors";
-import { addUpdatingCard } from "redux/card/cardOperations";
-// import { editCard } from "redux/card/cardOperations";
+import CardItem from "components/CardItem/CardItem";
 
 export default function Cards() {
-    const dispatch = useDispatch();
     const cards = useSelector(selectAllCards);
+    const isEditingCard = useSelector(selectIsEditingCard);
 
-    const updatingCard = useSelector(selectUpdatingCard);
-    const isEditingCard = useSelector(selectIsEditingCard)
+    const today = new Date();
 
-    const onUpdatingCard = (card) => {
-        // const storedCards = localStorage.getItem('cards');
-        // const cards = JSON.parse(storedCards);
-        // const cardToUpdate = cards.find(card => card._id === cardId);
-        // // console.log(cardToUpdate);
-        dispatch(addUpdatingCard(card));
-        // console.log(updatingCard)
-    };
+    const tomorrow = new Date();
+    tomorrow.setDate(today.getDate() + 1);
+
 
     return (
-        <CardsContainer>
-            {isEditingCard &&
+        <>
+            {/* EDITING CARD */}
+            {isEditingCard && !cards.find(card => card.status === 'Incomplete' && new Date(card.date).toDateString() === today.toDateString()) && (
                 <Card>
                     <AddCard />
                 </Card>
-            }
+            )}
 
-            {cards !== undefined &&
-                cards.map((card) => (
-                    <Card
-                        onDoubleClick={() => onUpdatingCard(card)}
-                        key={card._id}
-                        disabled={updatingCard !== null && card !== updatingCard}
-                    >
-                        
-                        { updatingCard !== card && (
-                            <>
-                                <CardTopContainer>
-                                <CardDifficulty text={card.difficulty}>{card.difficulty}</CardDifficulty>
-                                    <img src={starImage} alt="star" />
-                                </CardTopContainer>
-                                <CardTitle>{card.title}</CardTitle>
-                                <CardDate>{card.date}, {card.time}</CardDate>
-                                <CardCategoryContainer>
-                                    <CardCategoryText>{card.category}</CardCategoryText>
-                                </CardCategoryContainer>
-                            </>
-                        )}
-                        
-                        {updatingCard === card &&  <AddCard />}
-                        {/* {updatingCard === card && console.log('this card need to update')} */}
-                        {/* { (updatingCard && updatingCardId === card) && <AddCard />} */}
-                    </Card>
-                ))}
-        </CardsContainer>
+            {/* TODAY CARDS */}
+            {cards.find(card => card.status === 'Incomplete' && new Date(card.date).toDateString() === today.toDateString()) && (
+                <>
+                    
+                    <CardContainerTitle>Today:</CardContainerTitle>
+                        <CardsContainer>
+                             {isEditingCard && (
+                                <Card>
+                                    <AddCard />
+                                </Card>
+                            )}
+
+                            {cards !== undefined &&
+                                cards
+                                    .filter(card => card.status === 'Incomplete' && new Date(card.date).toDateString() === today.toDateString())
+                                    .map(card => (
+                                        <CardItem
+                                            key={card._id}
+                                            card={card}
+                                        />
+                                    ))
+                            }
+                    </CardsContainer>
+                </>
+            )}
+
+            {/* TOMORROW CARDS */}
+            {cards.find(card => card.status === 'Incomplete' && new Date(card.date).toDateString() === tomorrow.toDateString()) && (
+                <>
+                    <CardContainerTitle>Tomorrow:</CardContainerTitle>
+                        <CardsContainer>
+                            {cards !== undefined &&
+                                cards
+                                    .filter(card => card.status === 'Incomplete' && new Date(card.date).toDateString() === tomorrow.toDateString()).map((card) => (                            
+                                        <CardItem
+                                            key={card._id}
+                                            card={card}
+                                        />
+                                    ))
+                            }
+                    </CardsContainer>
+                </>
+            )}
+            
+            {/* OTHER CARDS */}
+            {cards.find(card => card.status === 'Incomplete' && new Date(card.date).toDateString() !== tomorrow.toDateString() && new Date(card.date).toDateString() !== today.toDateString()) && (
+                <>
+                    <CardContainerTitle>OTHER CARDS:</CardContainerTitle>
+                    <CardsContainer>
+                        {cards !== undefined &&
+                            cards
+                                .filter(card => card.status === 'Incomplete' && new Date(card.date).toDateString() !== tomorrow.toDateString() && new Date(card.date).toDateString() !== today.toDateString()).map((card) => (                            
+                                    <CardItem
+                                        key={card._id}
+                                        card={card}
+                                    />
+                                ))
+                        }
+                    </CardsContainer>
+                </>
+            )}
+            
+            {/* CARDS DONE */}
+            {cards.find(card => card.status === 'Complete') && (
+                <>
+                    <CardContainerTitle>Done:</CardContainerTitle>
+                    <CardsContainer>
+                        {cards !== undefined &&
+                            cards
+                                .filter(card => card.status === 'Complete').map((card) => (
+                                <CardItem
+                                        key={card._id}
+                                        card={card}
+                                    />
+                                ))
+                        }
+                    </CardsContainer>
+                </>
+                
+            )}
+            
+        
+        </>
     );
 }

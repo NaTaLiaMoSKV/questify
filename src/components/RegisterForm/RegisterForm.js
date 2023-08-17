@@ -1,24 +1,14 @@
 import { useState } from 'react';
-import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
-import {
-    AuthContainer,
-    AuthForm,
-    AuthFormField,
-    AuthFormWrapper,
-    AuthFormPasswordIcon,
-    AuthFormSubmitButton,
-    ErrorSection,
-    HelloText,
-    AuthFormSubmitContainer,
-    AuthFormSubmitNavLink
-} from '../LoginForm/LoginForm.styled';
-
-import { Formik } from 'formik';
-import * as Yup from 'yup';
-import { logIn, register } from 'redux/auth/authOperations';
-import { toast } from 'react-toastify';
 import { useDispatch } from 'react-redux';
 
+import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
+import { AuthContainer, AuthForm, AuthFormField, AuthFormWrapper, AuthFormPasswordIcon, AuthFormSubmitButton, ErrorSection, HelloText, AuthFormSubmitContainer, AuthFormSubmitNavLink } from '../LoginForm/LoginForm.styled';
+
+import { toast } from 'react-toastify';
+import { Formik } from 'formik';
+import * as Yup from 'yup';
+
+import { logIn, register } from 'redux/auth/authOperations';
 
 const validationSchema = Yup.object().shape({
     email: Yup.string().email('Invalid email').required('Email is required'),
@@ -40,8 +30,10 @@ const initialValues = {
 };
 
 const LoginForm = () => {
-    const [showPassword, setShowPassword] = useState(false);
     const dispatch = useDispatch();
+    
+    const [showPassword, setShowPassword] = useState(false);
+    const userName = localStorage.getItem('userName');
 
     const handleTogglePassword = () => {
         setShowPassword(!showPassword);
@@ -62,7 +54,7 @@ const LoginForm = () => {
 
     return (
         <AuthContainer>
-            <HelloText>Hi, Your Name</HelloText>
+            <HelloText>Hi, {userName}!</HelloText>
             <Formik
             initialValues={initialValues}
             validationSchema={validationSchema}

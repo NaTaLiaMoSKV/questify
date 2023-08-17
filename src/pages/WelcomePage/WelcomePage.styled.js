@@ -64,7 +64,13 @@ export const WelcomeTextSubtitle = styled.p`
     font-weight: 700;
     line-height: normal;
     letter-spacing: 0.48px;
+    margin-bottom: 60px;
+
+    @media screen and (min-width: 768px) and (max-width: 1199px) {
+        margin-bottom: 40px;
+    }
 `
+
 export const WelcomeTextTitle = styled.h1`
     color: #15395A;
     font-size: 18px;
@@ -81,7 +87,7 @@ export const WelcomeTextTitle = styled.h1`
 
     @media screen and (min-width: 1200px) {
         color: #15395A;
-        font-size: 36px;
+        font-size: 32px;
         line-height: 45px; 
         letter-spacing: 0.72px;
         margin-bottom: 35px;

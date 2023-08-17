@@ -45,13 +45,6 @@ const authSlice = createSlice({
         state.isLoggedIn = true;
         state.isLoading = false;
       })
-      // .addCase(setIsEditingCard.fulfilled, (state, action) => {
-      //   console.log('setIsEditingCard.fulfilled');
-      //   console.log(action);
-      //   console.log(action.type);
-      //   console.log(action.payload);
-      //   // state.isEditingCard = action.payload;
-      // })
       .addCase(logIn.pending, handlePending)
       .addCase(logIn.rejected, handleRejected)
       .addCase(logIn.fulfilled, (state, action) => {

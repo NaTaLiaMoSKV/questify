@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getAllCards, addCard, deleteCard, editCard } from './cardOperations';
+import { getAllCards, addCard, deleteCard, editCard, completeCard } from './cardOperations';
 import { logIn, logOut, refreshCurrentUser } from 'redux/auth/authOperations';
 
 const handlePending = state => {
@@ -26,35 +26,34 @@ const cardSlice = createSlice({
   },
   extraReducers: builder => {
     builder
-
       .addCase(getAllCards.pending, handlePending)
       .addCase(getAllCards.rejected, handleRejected)
       .addCase(getAllCards.fulfilled, (state, action) => {
-          state.isLoading = false;
-          state.cards = action.payload;
-          state.error = null;
+        state.isLoading = false;
+        state.cards = action.payload;
+        state.error = null;
       })
 
       .addCase(addCard.pending, handlePending)
       .addCase(addCard.rejected, handleRejected)
       .addCase(addCard.fulfilled, (state, action) => {
-          state.isLoading = false;
-          state.cards.push(action.payload.createdCard);
-          state.error = null;
+        state.isLoading = false;
+        state.cards.unshift(action.payload.createdCard);
+        state.error = null;
+        localStorage.setItem('cards', JSON.stringify(state.cards));
       })
 
       .addCase(deleteCard.pending, handlePending)
       .addCase(deleteCard.rejected, handleRejected)
       .addCase(deleteCard.fulfilled, (state, action) => {
-          state.isLoading = false;
-          state.error = null;
-          // НЕПОНЯТНО ПОКА
-          // const index = state.cards.findIndex(
-          //   item => item._id === action.payload.deletedBoard._id
-          // );
-          // state.cards.splice(index, 1);
+        state.isLoading = false;
+        state.error = null;
+        const index = state.cards.findIndex(
+          item => item._id === action.payload.cardId
+        );
+        state.cards.splice(index, 1);
+        localStorage.setItem('cards', JSON.stringify(state.cards));
       })
-
       .addCase(logOut.fulfilled, state => {
         state.cards = [];
         state.error = null;
@@ -78,6 +77,22 @@ const cardSlice = createSlice({
         state.isLoading = false;
         state.error = null;
         const { _id, title, difficulty, category, date, time, type, status } = action.payload.editedCard;
+
+        const cardIndex = state.cards.findIndex(
+          item => item._id === _id
+        );
+
+        state.cards[cardIndex] = {
+          ...state.cards[cardIndex], title, difficulty, category, date, time, type, status
+        };
+        localStorage.setItem('cards', JSON.stringify(state.cards));
+    })
+      .addCase(completeCard.pending, handlePending)
+      .addCase(completeCard.rejected, handleRejected)
+      .addCase(completeCard.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = null;
+        const { _id, title, difficulty, category, date, time, type, status } = action.payload.completedCard;
 
         const cardIndex = state.cards.findIndex(
           item => item._id === _id

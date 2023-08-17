@@ -29,9 +29,9 @@ export const CardsSection = styled.div`
 `
 
 export const AddCardButton = styled.button`
-    position: absolute;
-    bottom: 30px;
-    right: 0;
+    position: sticky;
+    bottom: 10px;
+    left: calc(100% - 70px);
     width: 52px;
     height: 52px;
     background-color: #FF851C;

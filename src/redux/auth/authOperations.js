@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { toast } from 'react-toastify';
+
 const instance = axios.create({
   baseURL: 'https://questify-backend.goit.global/',
 });

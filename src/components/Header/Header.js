@@ -1,3 +1,5 @@
+import { Tooltip } from 'react-tooltip'
+import css from '../CardItem/CardItem.module.css'
 import { useDispatch } from "react-redux"
 import { logOut } from "redux/auth/authOperations";
 
@@ -20,16 +22,20 @@ export default function Header() {
                 <HeaderLogo>Questify</HeaderLogo>
                 <UserContainer>
                     <UserAvatar><UserFirstLetter>{userName.charAt(0)}</UserFirstLetter></UserAvatar>
-                    <UserText>Hello, {userName}</UserText>
+                    <UserText>{userName}’s Quest Log</UserText>
                 </UserContainer>
                 <LogoutContainer>
                     <LogoutUserAvatar><UserFirstLetter>{userName.charAt(0)}</UserFirstLetter></LogoutUserAvatar>
                     <img src={trophyImage} alt='trophy' />
-                    <LogoutButton onClick={onLogoutButtonClick}>
-                            <LogoutIcon>
-                                <use href={sprite + '#icon-logout'} />
+                        <LogoutButton  data-tooltip-id="exit-tooltip" data-tooltip-content="Exit" onClick={onLogoutButtonClick}>
+                                <LogoutIcon>
+                                    <use href={sprite + '#icon-logout'} />
                             </LogoutIcon>
-                    </LogoutButton>
+
+                        </LogoutButton>
+                    
+                    <Tooltip className={css.tooltipExit}  id="exit-tooltip" title="Exit"></Tooltip>
+                    
                 </LogoutContainer>
             </HeaderContainer>
         </HeaderSection>

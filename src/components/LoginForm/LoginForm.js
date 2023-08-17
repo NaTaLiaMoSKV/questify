@@ -43,6 +43,7 @@ const initialValues = {
 const LoginForm = () => {
     const dispatch = useDispatch();
     const [showPassword, setShowPassword] = useState(false);
+    const userName = localStorage.getItem('userName');
 
     const handleTogglePassword = () => {
         setShowPassword(!showPassword);
@@ -59,7 +60,7 @@ const LoginForm = () => {
 
     return (
         <AuthContainer>
-            <HelloText>Hi, Your Name</HelloText>
+            <HelloText>Hi, {userName}!-</HelloText>
             <Formik
             initialValues={initialValues}
             validationSchema={validationSchema}
@@ -93,7 +94,6 @@ const LoginForm = () => {
                     
                     <AuthFormSubmitContainer>
                         <AuthFormSubmitButton type="submit">
-                            {/* {loading ? <Loader /> : 'Login now'} */}
                             Sign In!
                         </AuthFormSubmitButton>
                         <AuthFormSubmitNavLink to='/auth/register'>Sign up</AuthFormSubmitNavLink>

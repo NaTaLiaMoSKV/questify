@@ -1,5 +1,66 @@
 import { styled } from "styled-components";
 
+export const CardWrapper = styled.div`
+    width: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &.deleting {
+        opacity: 0.3;
+    }
+
+`
+
+export const DeletingCardContainer = styled.div`
+    position: absolute;
+    padding: 24px 30px 17px;
+    top: 30%;
+    opacity: 1;
+    z-index: 500;
+    border-radius: 10px;
+    background: #E8E8E8;
+    box-shadow: 3px 4px 4px 0px rgba(21, 57, 90, 0.03), -3px -4px 4px 0px rgba(21, 57, 90, 0.03);
+
+`
+
+export const CancelDeleteCardButton = styled.button`
+    border:none;
+    background-color: transparent;
+    cursor: pointer;
+    color: #24D40C;
+    text-align: center;
+    font-family: 'Helvetica Neue Cyr', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-transform: uppercase;
+`
+
+export const DeleteText = styled.p`
+    margin-bottom: 14px;
+    color: #282828;
+    text-align: center;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 550;
+    line-height: normal;
+`
+
+export const DeleteCardButton = styled.button`
+    border:none;
+    background-color: transparent;
+    cursor: pointer;
+    color: #DB0938;
+    text-align: center;
+    font-family: 'Helvetica Neue Cyr', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-transform: uppercase;
+`
+
 export const DropdownList = styled.ul`
     position: absolute;
     top: 30px;
@@ -74,6 +135,12 @@ export const DropdownItem = styled.li`
             background-color: #DB0837;
         }
     `}
+    ${props =>
+        props.text !== 'Easy' && props.text !== 'Normal' && props.text !== 'Hard' &&
+        `
+            text-transform: uppercase;
+        `
+    }
 
     &:hover,
     &:focus {
@@ -120,6 +187,38 @@ export const DropdownInput = styled.div`
     align-items: center;
 `
 
+export const CardCompleteContainer = styled.div`
+    width: 25px;
+    height: 25px;
+    
+    padding: 0;
+    
+    transition: all 150ms linear;
+
+    & svg {
+        pointer-events: none;
+        width: 23px;
+        height: 23px;
+
+    }
+
+    &.completed svg:first-child,
+    & svg:last-child {
+        display: block;
+    }
+
+    &.completed svg:last-child,
+    & svg:first-child {
+        display: none;
+    }
+
+
+    &:hover  {
+        transform: scale(1.2);
+    }
+
+`
+
 export const CardSettingsContainer = styled.div`
     margin-bottom: 50px;
 `
@@ -141,6 +240,7 @@ export const CardTitleInput = styled.input`
     font-size: 14px;
     font-family: 'Helvetica Neue Cyr', sans-serif;
     letter-spacing: 0.48px;
+    text-align: center;
 
     border: none;
     border-bottom: 2px solid #00D7FF;
@@ -163,6 +263,7 @@ export const CardTitleInput = styled.input`
         border-bottom: 3px solid #00D7FF;
     }
 `
+
 export const UpdateCardTitleInput = styled.input`
     margin-top: 10px;
     width: 160px;
@@ -236,9 +337,10 @@ export const CalendarPickerText = styled.p`
 `
 
 export const CalendarPickerInput = styled.input`
-    width: 20px;
+    width: 18px;
     color: transparent;
     border: none;
+    outline: none;
     
 
     &::placeholder {
@@ -296,6 +398,7 @@ export const CancelButton = styled.button`
 `
 
 export const AddCardButton = styled.button`
+    margin-left: 3px;
     padding: 0;
     cursor: pointer;
     color: #00D7FF;
@@ -309,5 +412,5 @@ export const AddCardButton = styled.button`
 export const ButtonsSpan = styled.span`
     color: #B9C3C8;
     margin-left: 5px;
-    margin-right: 8px;
+    margin-right: 5px;
 `
