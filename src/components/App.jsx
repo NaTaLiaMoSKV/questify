@@ -14,6 +14,7 @@ import { selectIsRefreshing } from "redux/auth/authSelectors";
 import { useEffect } from "react";
 import { refreshCurrentUser } from "redux/auth/authOperations";
 import Loader from "./Loader/Loader";
+import RestrictedAuthRoute from "./RestrictedAuthRoute/RestrictedAuthRoute";
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -49,7 +50,7 @@ export const App = () => {
             <Route
               path="auth/:id"
               element={
-                <RestrictedRoute redirectTo="/home" component={<AuthPage />} />
+                <RestrictedAuthRoute redirectTo="/home" component={<AuthPage />} />
               }
             >
               <Route path="login" element={<LoginForm />} />

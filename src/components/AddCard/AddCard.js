@@ -238,9 +238,9 @@ export default function AddCard() {
                                 </DropdownToggle>
                             </DropdownInput>
                             <DropdownList onClick={onDropdownListClick} ref={dropdownListRef}>
-                                <DropdownItem ref={el => dropdownItemsRef.current.push(el)} text="Easy">Easy</DropdownItem>
-                                <DropdownItem ref={el => dropdownItemsRef.current.push(el)} text="Normal">Normal</DropdownItem>
-                                <DropdownItem ref={el => dropdownItemsRef.current.push(el)} text="Hard">Hard</DropdownItem>
+                                <DropdownItem ref={el => dropdownItemsRef.current.push(el)} $text="Easy">Easy</DropdownItem>
+                                <DropdownItem ref={el => dropdownItemsRef.current.push(el)} $text="Normal">Normal</DropdownItem>
+                                <DropdownItem ref={el => dropdownItemsRef.current.push(el)} $text="Hard">Hard</DropdownItem>
                             </DropdownList>
                         </DropdownContainer>
                         <img src={starImage2} alt='star' />
@@ -319,9 +319,9 @@ export default function AddCard() {
                                 </DropdownToggle>
                             </DropdownInput>
                             <DropdownList onClick={onDropdownListClick} ref={dropdownListRef}>
-                                <DropdownItem ref={el => dropdownItemsRef.current.push(el)} text="Easy">Easy</DropdownItem>
-                                <DropdownItem ref={el => dropdownItemsRef.current.push(el)} text="Normal">Normal</DropdownItem>
-                                <DropdownItem ref={el => dropdownItemsRef.current.push(el)} text="Hard">Hard</DropdownItem>
+                                <DropdownItem ref={el => dropdownItemsRef.current.push(el)} $text="Easy">Easy</DropdownItem>
+                                <DropdownItem ref={el => dropdownItemsRef.current.push(el)} $text="Normal">Normal</DropdownItem>
+                                <DropdownItem ref={el => dropdownItemsRef.current.push(el)} $text="Hard">Hard</DropdownItem>
                             </DropdownList>
                         </DropdownContainer>
                         <img src={starImage2} alt='star' />

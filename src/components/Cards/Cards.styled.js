@@ -5,15 +5,11 @@ export const CardsContainer = styled.div`
     justify-content: center;
     flex-wrap: wrap;
     gap: 22px;
+    user-select: none;
 
     @media screen and (min-width: 768px) {
         row-gap: 18px;
         column-gap: 16px;
-    
-    }
-
-    @media screen and (min-width: 1200px) {
-        
         justify-content: left;
     }
 `
@@ -28,6 +24,7 @@ export const CardContainerTitle = styled.h1`
     font-weight: 300;
     line-height: normal;
     letter-spacing: 0.3px;
+    user-select: none;
 `
 
 export const Card = styled.div`
@@ -40,6 +37,13 @@ export const Card = styled.div`
     border-radius: 10px;
     background: #FFF;
     box-shadow: 3px 4px 4px 0px rgba(21, 57, 90, 0.03), -3px -4px 4px 0px rgba(21, 57, 90, 0.03);
+    cursor: pointer;
+    transition: all 150ms linear;
+
+    &:hover,
+    &:focus {
+        transform: scale(1.03);
+    }
 
     @media screen and (min-width: 768px) {
         width: 224px;
@@ -75,7 +79,7 @@ export const CardDifficulty = styled.p`
     }
 
     ${props =>
-        props.text === 'Easy' &&
+        props.$text === 'Easy' &&
         `
         &::before {
             background-color: #00D7FF;
@@ -83,7 +87,7 @@ export const CardDifficulty = styled.p`
     `}
 
     ${props =>
-        props.text === 'Normal' &&
+        props.$text === 'Normal' &&
         `
         &::before {
             background-color: #24D40C;
@@ -91,7 +95,7 @@ export const CardDifficulty = styled.p`
     `}
 
     ${props =>
-        props.text === 'Hard' &&
+        props.$text === 'Hard' &&
         `
         &::before {
             background-color: #DB0837;
@@ -184,37 +188,37 @@ export const CardCategoryContainer = styled.div`
     }
 
     ${props =>
-        props.text === 'Family' &&
+        props.$text === 'Family' &&
         `
             background: #ffe6d3;
         `
     }
     ${props =>
-        props.text === 'Work' &&
+        props.$text === 'Work' &&
         `
             background: #ffb3b3;
         `
     }
     ${props =>
-        props.text === 'Stuff' &&
+        props.$text === 'Stuff' &&
         `
             background: #D3F6CE;
         `
     }
     ${props =>
-        props.text === 'Health' &&
+        props.$text === 'Health' &&
         `
             background: #CDF7FF;
         `
     }
     ${props =>
-        props.text === 'Leisure' &&
+        props.$text === 'Leisure' &&
         `
             background: #F8D2FF;
         `
     }
     ${props =>
-        props.text === 'Learning' &&
+        props.$text === 'Learning' &&
         `
             background: #FFF6C0;
         `

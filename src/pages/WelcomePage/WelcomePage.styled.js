@@ -13,6 +13,7 @@ export const WelcomeContainer = styled.div`
     height: 100vh;
     position: relative;
     background-color: #FFF;
+    user-select: none;
     
     background-image: url(${mobilePic2}), url(${mobilePic1});
     background-color: rgba(255, 255, 255, 0.5);
@@ -31,7 +32,7 @@ export const WelcomeContainer = styled.div`
     @media screen and (min-width: 1200px) {
         background-position: top right, bottom right;
     }
-`;
+`
 
 export const WelcomeTextContainer = styled.div`
     width: calc(100% - 40px);

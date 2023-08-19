@@ -85,7 +85,7 @@ export const DropdownItem = styled.li`
     color: #B9C3C8;
     font-size: 16px;
     letter-spacing: 0.32px;
-    transition: all 100ms linear;
+    transition: all 150ms linear;
     
 
     &:not(:last-child) {
@@ -103,7 +103,7 @@ export const DropdownItem = styled.li`
     }
 
     ${props =>
-        (props.text === 'Easy' || props.text === 'Normal' || props.text === 'Hard') &&
+        (props.$text === 'Easy' || props.$text === 'Normal' || props.$text === 'Hard') &&
         `
         padding-left: 20px;
 
@@ -114,7 +114,7 @@ export const DropdownItem = styled.li`
     `}
 
     ${props =>
-        props.text === 'Easy' &&
+        props.$text === 'Easy' &&
         `
         &::before {
             background-color: #00D7FF;
@@ -122,7 +122,7 @@ export const DropdownItem = styled.li`
     `}
 
     ${props =>
-        props.text === 'Normal' &&
+        props.$text === 'Normal' &&
         `
         &::before {
             background-color: #24D40C;
@@ -130,14 +130,14 @@ export const DropdownItem = styled.li`
     `}
 
     ${props =>
-        props.text === 'Hard' &&
+        props.$text === 'Hard' &&
         `
         &::before {
             background-color: #DB0837;
         }
     `}
     ${props =>
-        props.text !== 'Easy' && props.text !== 'Normal' && props.text !== 'Hard' &&
+        props.$text !== 'Easy' && props.$text !== 'Normal' && props.$text !== 'Hard' &&
         `
             text-transform: uppercase;
         `

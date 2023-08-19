@@ -6,6 +6,7 @@ export const AuthContainer = styled.div`
     width: calc(100% - 40px);
     padding: 0 20px;
     position: relative;
+    user-select: none;
 
     @media screen and (min-width: 480px) {
         width: 375px;
@@ -37,15 +38,16 @@ export const AuthFormWrapper = styled.div`
     position: relative;
     width: 100%;
     max-width: 350px;
-`;
+`
 
 export const AuthForm = styled(Form)`
     display: flex;
     flex-direction: column;
     gap: 14px;
-`;
+`
 
-export const ErrorSection = styled(ErrorMessage)``;
+export const ErrorSection = styled(ErrorMessage)`
+`
 
 export const AuthFormField = styled(Field)`
     width: 100%;
@@ -77,7 +79,7 @@ export const AuthFormField = styled(Field)`
         opacity: 1;
         border-bottom: 3px solid #00D7FF;
     }
-`;
+`
 
 export const AuthFormPasswordIcon = styled.span`
     width: 25px;
@@ -87,7 +89,7 @@ export const AuthFormPasswordIcon = styled.span`
     color: #00D7FF;
     opacity: 0.4;
     cursor: pointer;
-`;
+`
 
 export const AuthFormSubmitButton = styled.button`
     position: relative;
@@ -127,13 +129,14 @@ export const AuthFormSubmitButton = styled.button`
     }
 
     cursor: pointer;
-`;
+`
 
 export const AuthFormSubmitContainer = styled.div`
     display: flex;
     align-items: baseline;
     gap: 20px;
 `
+
 export const AuthFormSubmitNavLink = styled(NavLink)`
     text-decoration: none;
     font-weight: 600;

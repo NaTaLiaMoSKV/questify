@@ -4,6 +4,7 @@ export const HeaderSection = styled.div`
     width: 100vw;
     background-color: #242A37;
     box-shadow: 0px 4px 4px 0px rgba(36, 42, 55, 0.10);
+    user-select: none;
 `
 
 export const HeaderContainer = styled.div`
@@ -57,7 +58,6 @@ export const UserContainer = styled.div`
 `
 
 export const UserAvatar = styled.div`
-
     width: 35px;
     height: 35px;
     border-radius: 50%;
@@ -66,7 +66,6 @@ export const UserAvatar = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-
 `
 
 export const LogoutUserAvatar = styled.div`
@@ -83,11 +82,13 @@ export const LogoutUserAvatar = styled.div`
         display: none;
     }
 `
+
 export const UserFirstLetter = styled.p`
     color: #FFF;
     font-size: 17px;
     font-weight: 900;
 `
+
 export const UserText = styled.p`
     color: #7B8AA4;
     font-size: 17px;
@@ -111,6 +112,7 @@ export const LogoutButton = styled.button`
     background-color: transparent;
     cursor: pointer;
 `
+
 export const LogoutIcon = styled.svg`
     width: 35px;
     height: 35px;

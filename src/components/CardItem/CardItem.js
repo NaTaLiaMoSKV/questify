@@ -13,6 +13,7 @@ import { selectAllCards, selectUpdatingCard } from "redux/card/cardSelectors";
 import sprite from '../../images/symbol-defs.svg'
 import { Card, CardTopContainer, CardCompletingContainer, CardCompletingText, CardCompletingButton, CardCompletingCancelButton, CardDifficulty, CardCompleteButton, CardTitle, CardDate, CardCategoryContainer, CardCategoryText, CardCompletingIcon } from "components/Cards/Cards.styled";
 import { Tooltip } from "react-tooltip";
+import { setIsEditingCard } from "redux/auth/authOperations";
 
 export default function CardItem({ card }) {
     const dispatch = useDispatch();
@@ -52,6 +53,7 @@ export default function CardItem({ card }) {
     }
 
     const onUpdatingCard = (card) => {
+        dispatch(setIsEditingCard(false)); 
         dispatch(addUpdatingCard(card));
     };
 
@@ -100,7 +102,7 @@ export default function CardItem({ card }) {
             {!isUpdating && !completingCard && (
                 <>
                     <CardTopContainer>
-                            <CardDifficulty text={card.difficulty}>{card.difficulty}</CardDifficulty>
+                            <CardDifficulty $text={card.difficulty}>{card.difficulty}</CardDifficulty>
                             {card.status === 'Complete' && (
                                 <svg width="25" height="25">
                                     <use href={sprite + '#icon-star'}></use>
@@ -123,7 +125,7 @@ export default function CardItem({ card }) {
                     </CardTopContainer>
                     <CardTitle>{card.title}</CardTitle>
                     <CardDate>{formatDate(new Date(card.date))}, {card.time}</CardDate>
-                    <CardCategoryContainer text={card.category}>
+                    <CardCategoryContainer $text={card.category}>
                         <CardCategoryText>{card.category}</CardCategoryText>
                     </CardCategoryContainer>
                 </>
