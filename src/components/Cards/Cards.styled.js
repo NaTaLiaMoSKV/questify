@@ -21,9 +21,9 @@ export const CardContainerTitle = styled.h1`
     margin-bottom: 18px;
     font-size: 15px;
     font-style: normal;
-    font-weight: 300;
+    font-weight: 600;
     line-height: normal;
-    letter-spacing: 0.3px;
+    letter-spacing: 0.03em;
     user-select: none;
 `
 
@@ -39,9 +39,15 @@ export const Card = styled.div`
     box-shadow: 3px 4px 4px 0px rgba(21, 57, 90, 0.03), -3px -4px 4px 0px rgba(21, 57, 90, 0.03);
     cursor: pointer;
     transition: all 150ms linear;
+    
 
     &:hover,
     &:focus {
+        transform: scale(1.03);
+    }
+
+    &.current {
+        z-index: 1000;
         transform: scale(1.03);
     }
 

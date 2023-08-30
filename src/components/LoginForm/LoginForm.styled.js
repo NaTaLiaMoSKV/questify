@@ -34,6 +34,25 @@ export const HelloText = styled.h2`
     letter-spacing: 0.48px;
 `
 
+export const TestLink = styled.a`
+    margin-left: 30px;
+    color: #B9C3C8;
+    font-size: 14px;
+    border-bottom: 1px solid #B9C3C8;
+    cursor: pointer;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    transition: all 150ms linear;
+
+    &:hover,
+    &:focus {
+        color: #282828;
+        border-bottom: 1px solid #282828;
+
+    }
+`
+
+
 export const AuthFormWrapper = styled.div`
     position: relative;
     width: 100%;
@@ -44,6 +63,7 @@ export const AuthForm = styled(Form)`
     display: flex;
     flex-direction: column;
     gap: 14px;
+    margin-top: 30px;
 `
 
 export const ErrorSection = styled(ErrorMessage)`
@@ -53,7 +73,6 @@ export const AuthFormField = styled(Field)`
     width: 100%;
     height: 49px;
     margin-bottom: 10px;
-    margin-top: 30px;
 
     font-size: 14px;
     font-family: 'Helvetica Neue Cyr', sans-serif;
@@ -84,7 +103,7 @@ export const AuthFormField = styled(Field)`
 export const AuthFormPasswordIcon = styled.span`
     width: 25px;
     position: absolute;
-    top: 45px;
+    top: 15px;
     right: 18px;
     color: #00D7FF;
     opacity: 0.4;

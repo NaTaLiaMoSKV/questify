@@ -12,8 +12,6 @@ body {
   font-family: 'Helvetica Neue Cyr', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
-  
 }
 
 body::-webkit-scrollbar-track {
@@ -23,7 +21,8 @@ body::-webkit-scrollbar-track {
 }
 
 body::-webkit-scrollbar {
-  width: 6px;
+  width: 8px;
+  height: 8px;
   background-color: #fafafa;
 }
 
@@ -34,8 +33,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
 p,

@@ -8,12 +8,12 @@ import css from './CardItem.module.css'
 
 import AddCard from "components/AddCard/AddCard";
 import { addUpdatingCard, completeCard } from "redux/card/cardOperations";
+import { setIsEditingCard } from "redux/auth/authOperations";
 import { selectAllCards, selectUpdatingCard } from "redux/card/cardSelectors";
 
 import sprite from '../../images/symbol-defs.svg'
 import { Card, CardTopContainer, CardCompletingContainer, CardCompletingText, CardCompletingButton, CardCompletingCancelButton, CardDifficulty, CardCompleteButton, CardTitle, CardDate, CardCategoryContainer, CardCategoryText, CardCompletingIcon } from "components/Cards/Cards.styled";
 import { Tooltip } from "react-tooltip";
-import { setIsEditingCard } from "redux/auth/authOperations";
 
 export default function CardItem({ card }) {
     const dispatch = useDispatch();
@@ -52,18 +52,21 @@ export default function CardItem({ card }) {
         setCompletingCard(card);
     }
 
-    const onUpdatingCard = (card) => {
+    const onCardDoubleClick = (card) => {
+        cardRef.current.classList.add('current');
         dispatch(setIsEditingCard(false)); 
         dispatch(addUpdatingCard(card));
     };
 
     const onContinueCompletingClick = (e, cardId) => {
+        cardRef.current.classList.remove('current');
         dispatch(completeCard(cardId));
         handleMessage('Quest completed successfully');
     };
 
     const onCancelCompletingClick = e => {
         setCompletingCard(null);
+        cardRef.current.classList.remove('current');
     };
 
     const handleMessage = (message) => {
@@ -74,7 +77,7 @@ export default function CardItem({ card }) {
     };
 
     return (
-        <Card ref={cardRef} onDoubleClick={() => onUpdatingCard(card)} key={card._id} disabled={updatingCard !== null && card !== updatingCard} >
+        <Card ref={cardRef} onDoubleClick={() => onCardDoubleClick(card)} key={card._id} disabled={updatingCard !== null && card !== updatingCard} >
             {/* COMPLETING CARD */}
             {completingCard !== null && completingCard._id === card._id && (
                 <>

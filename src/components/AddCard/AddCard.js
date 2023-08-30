@@ -12,11 +12,11 @@ import sprite from '../../images/symbol-defs.svg'
 
 import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import { Tooltip } from "react-tooltip";
 
 import { setIsEditingCard } from "redux/auth/authOperations";
 import { addCard, addUpdatingCard, deleteCard, editCard } from "redux/card/cardOperations";
 import { selectUpdatingCard } from "redux/card/cardSelectors";
-import { Tooltip } from "react-tooltip";
 
 
 export default function AddCard() {
@@ -24,12 +24,10 @@ export default function AddCard() {
 
     const dropdownTextRef = useRef('');
     const dropdownListRef = useRef(null);
-    const dropdownItemsRef = useRef([]);
     const cardTitleInputRef = useRef('');
     
     const categoryDropdownTextRef = useRef('');
     const categoryDropdownListRef = useRef(null);
-    const categoryDropdownItemsRef = useRef([]);
 
     const cardWrapperRef = useRef('');
     const cardUpdatedDate = useRef('');
@@ -73,57 +71,33 @@ export default function AddCard() {
         return `${date.getHours()}:${formattedMinutes}`;
     };
 
-    const onDropdownClick = (e) => {
+    const onDropdownClick = e => {
         dropdownListRef.current.classList.toggle('show');
-        dropdownItemsRef.current.forEach(item => {
-            if (item !== null && item.textContent === dropdownTextRef.current.innerText) {
-                item.classList.add('active');
-            }
-        });
     };
 
-    const onDropdownListClick = (e) => {
+    const onDropdownListClick = e => {
         if (e.target !== dropdownListRef.current) {
             dropdownTextRef.current.innerText = e.target.textContent;
-
             dropdownListRef.current.classList.remove('show');
-            dropdownItemsRef.current.forEach(item => {
-                if (item !== null) {
-                    item.classList.remove('active');
-                }
-            });
         }
-        
     };
 
-    const onCategoryDropdownClick = (e) => {
+    const onCategoryDropdownClick = e => {
         categoryDropdownListRef.current.classList.toggle('show');
-        categoryDropdownItemsRef.current.forEach(item => {
-            if (item !== null && item.textContent === categoryDropdownTextRef.current.innerText) {
-                item.classList.add('active');
-            }
-        });
     };
 
-    const onCategoryDropdownListClick = (e) => {
+    const onCategoryDropdownListClick = e => {
         if (e.target !== categoryDropdownListRef.current) {
             categoryDropdownTextRef.current.innerText = e.target.textContent;
-
             categoryDropdownListRef.current.classList.remove('show');
-            categoryDropdownItemsRef.current.forEach(item => {
-                if (item !== null) {
-                    item.classList.remove('active');
-                }
-            });
-        }
-        
+        }  
     };
 
-    const onCancelButtonClick = (e) => {
+    const onCancelButtonClick = e => {
         dispatch(setIsEditingCard(false));
     }
 
-    const onAddCardButtonClick = (e) => {
+    const onAddCardButtonClick = e => {
         try {
             const newCard = getAllData();
             dispatch(addCard(newCard));
@@ -238,9 +212,9 @@ export default function AddCard() {
                                 </DropdownToggle>
                             </DropdownInput>
                             <DropdownList onClick={onDropdownListClick} ref={dropdownListRef}>
-                                <DropdownItem ref={el => dropdownItemsRef.current.push(el)} $text="Easy">Easy</DropdownItem>
-                                <DropdownItem ref={el => dropdownItemsRef.current.push(el)} $text="Normal">Normal</DropdownItem>
-                                <DropdownItem ref={el => dropdownItemsRef.current.push(el)} $text="Hard">Hard</DropdownItem>
+                                <DropdownItem $text="Easy">Easy</DropdownItem>
+                                <DropdownItem $text="Normal">Normal</DropdownItem>
+                                <DropdownItem $text="Hard">Hard</DropdownItem>
                             </DropdownList>
                         </DropdownContainer>
                         <img src={starImage2} alt='star' />
@@ -273,12 +247,12 @@ export default function AddCard() {
                                 </DropdownToggle>
                             </DropdownInput>
                             <DropdownList onClick={onCategoryDropdownListClick} ref={categoryDropdownListRef}>
-                                <DropdownItem ref={el => categoryDropdownItemsRef.current.push(el)}>Stuff</DropdownItem>
-                                <DropdownItem ref={el => categoryDropdownItemsRef.current.push(el)}>Family</DropdownItem>
-                                <DropdownItem ref={el => categoryDropdownItemsRef.current.push(el)}>Health</DropdownItem>
-                                <DropdownItem ref={el => categoryDropdownItemsRef.current.push(el)}>Learning</DropdownItem>
-                                <DropdownItem ref={el => categoryDropdownItemsRef.current.push(el)}>Leisure</DropdownItem>
-                                <DropdownItem ref={el => categoryDropdownItemsRef.current.push(el)}>Work</DropdownItem>
+                                <DropdownItem>Stuff</DropdownItem>
+                                <DropdownItem>Family</DropdownItem>
+                                <DropdownItem>Health</DropdownItem>
+                                <DropdownItem>Learning</DropdownItem>
+                                <DropdownItem>Leisure</DropdownItem>
+                                <DropdownItem>Work</DropdownItem>
                             </DropdownList>
                         </DropdownContainer>
                     </CategoryDropdownContainer>
@@ -319,9 +293,9 @@ export default function AddCard() {
                                 </DropdownToggle>
                             </DropdownInput>
                             <DropdownList onClick={onDropdownListClick} ref={dropdownListRef}>
-                                <DropdownItem ref={el => dropdownItemsRef.current.push(el)} $text="Easy">Easy</DropdownItem>
-                                <DropdownItem ref={el => dropdownItemsRef.current.push(el)} $text="Normal">Normal</DropdownItem>
-                                <DropdownItem ref={el => dropdownItemsRef.current.push(el)} $text="Hard">Hard</DropdownItem>
+                                <DropdownItem $text="Easy">Easy</DropdownItem>
+                                <DropdownItem $text="Normal">Normal</DropdownItem>
+                                <DropdownItem $text="Hard">Hard</DropdownItem>
                             </DropdownList>
                         </DropdownContainer>
                         <img src={starImage2} alt='star' />
@@ -354,12 +328,12 @@ export default function AddCard() {
                                 </DropdownToggle>
                             </DropdownInput>
                             <DropdownList onClick={onCategoryDropdownListClick} ref={categoryDropdownListRef}>
-                                <DropdownItem ref={el => categoryDropdownItemsRef.current.push(el)}>Stuff</DropdownItem>
-                                <DropdownItem ref={el => categoryDropdownItemsRef.current.push(el)}>Family</DropdownItem>
-                                <DropdownItem ref={el => categoryDropdownItemsRef.current.push(el)}>Health</DropdownItem>
-                                <DropdownItem ref={el => categoryDropdownItemsRef.current.push(el)}>Learning</DropdownItem>
-                                <DropdownItem ref={el => categoryDropdownItemsRef.current.push(el)}>Leisure</DropdownItem>
-                                <DropdownItem ref={el => categoryDropdownItemsRef.current.push(el)}>Work</DropdownItem>
+                                <DropdownItem>Stuff</DropdownItem>
+                                <DropdownItem>Family</DropdownItem>
+                                <DropdownItem>Health</DropdownItem>
+                                <DropdownItem>Learning</DropdownItem>
+                                <DropdownItem>Leisure</DropdownItem>
+                                <DropdownItem>Work</DropdownItem>
                             </DropdownList>
                         </DropdownContainer>
                     </CategoryDropdownContainer>

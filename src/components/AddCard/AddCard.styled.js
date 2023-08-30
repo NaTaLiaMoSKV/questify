@@ -19,7 +19,7 @@ export const DeletingCardContainer = styled.div`
     padding: 24px 30px 17px;
     top: 30%;
     opacity: 1;
-    z-index: 500;
+    z-index: 800;
     border-radius: 10px;
     background: #E8E8E8;
     box-shadow: 3px 4px 4px 0px rgba(21, 57, 90, 0.03), -3px -4px 4px 0px rgba(21, 57, 90, 0.03);

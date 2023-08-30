@@ -59,6 +59,7 @@ export const AddCardButton = styled.button`
     justify-content: center;
     cursor: pointer;
     padding: 13px;
+    z-index: 1001;
 `
 
 export const AddCardIcon = styled.svg`

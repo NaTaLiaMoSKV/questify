@@ -8,6 +8,7 @@
     line-height: normal;
     letter-spacing: 0.28px;
     display: none;
+    z-index: 1000;
 }
 
 .tooltipExit {
