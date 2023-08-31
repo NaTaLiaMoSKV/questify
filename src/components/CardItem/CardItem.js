@@ -53,6 +53,10 @@ export default function CardItem({ card }) {
     }
 
     const onCardDoubleClick = (card) => {
+        const allCards = document.querySelectorAll('.current');
+        allCards.forEach(element => {
+            element.classList.remove('current');
+        });
         cardRef.current.classList.add('current');
         dispatch(setIsEditingCard(false)); 
         dispatch(addUpdatingCard(card));

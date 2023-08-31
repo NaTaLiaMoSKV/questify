@@ -59,7 +59,7 @@ const LoginForm = () => {
     <AuthContainer>
         <HelloText>
             Hi, {userName}!
-            <TestLink onClick={onTestLinkClick}>for testing</TestLink>
+            <TestLink onClick={onTestLinkClick}>test the app</TestLink>
         </HelloText>
         <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit} innerRef={formRef}>
             {({ handleSubmit, values, handleChange, errors, touched }) => (

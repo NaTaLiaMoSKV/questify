@@ -16,8 +16,8 @@ export default function Cards() {
     const cards = useSelector(selectAllCards);
     const isEditingCard = useSelector(selectIsEditingCard);
 
-     const today = useMemo(() => new Date(), []);
-
+    const allCards = document.querySelectorAll('.current');
+    const today = useMemo(() => new Date(), []);
     const tomorrow = new Date();
     tomorrow.setDate(today.getDate() + 1);
 
@@ -31,11 +31,18 @@ export default function Cards() {
             .forEach((card) => {
                 dispatch(completeCard(card._id));
             });
-    }, [cards, today, dispatch]);    
+    }, [cards, today, dispatch]);   
+    
+    useEffect(() => {
+        allCards
+            .forEach(element => {
+            element.classList.remove('current');
+            });
+    }, [allCards, dispatch]);    
 
     return (
         <>
-            {/* EDITING CARD */}
+            {/* ADD CARD */}
             {isEditingCard && !cards.find(card => card.status === 'Incomplete' && new Date(card.date).toDateString() === today.toDateString()) && (
                 <CardsContainer>
                     <Card className="current">
@@ -106,7 +113,6 @@ export default function Cards() {
             )}
             
             {/* CARDS DONE */}
-            
             {cards.find(card => card.status === 'Complete') && (
                 <>
                     <CardContainerTitle>Done:</CardContainerTitle>

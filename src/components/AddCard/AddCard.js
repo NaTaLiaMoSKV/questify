@@ -95,6 +95,7 @@ export default function AddCard() {
 
     const onCancelButtonClick = e => {
         dispatch(setIsEditingCard(false));
+        removeCurrentClass();
     }
 
     const onAddCardButtonClick = e => {
@@ -115,6 +116,7 @@ export default function AddCard() {
 
     const onStopEditingButtonClick = e => {
         dispatch(addUpdatingCard(null));
+        removeCurrentClass();
     }
 
     const onSaveCardButtonClick = e => {
@@ -123,6 +125,7 @@ export default function AddCard() {
             const updatedData = getAllData();
             dispatch(editCard({ cardId: updatingCard._id, updatedData: updatedData }));
             dispatch(addUpdatingCard(null));
+            removeCurrentClass();
         } catch (error) {
             handleError(error.message);
         }
@@ -138,6 +141,7 @@ export default function AddCard() {
         setDeletingCard(null);
         dispatch(deleteCard(updatingCard._id));
         dispatch(addUpdatingCard(null));
+        removeCurrentClass();
         handleMessage('Quest deleted successfully');
     };
 
@@ -182,6 +186,11 @@ export default function AddCard() {
             autoClose: 2000
         });
     };
+
+    const removeCurrentClass = () => {
+        const currentCard = document.querySelector('.current');
+        currentCard.classList.remove('current');
+    }
 
     return (
         <>
