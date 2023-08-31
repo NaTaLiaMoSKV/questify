@@ -29,8 +29,7 @@ Welcome to **Questify**, your go-to solution for efficiently managing your tasks
 
 1. Clone this repository to your local machine.
 2. Run `npm install` to install the necessary dependencies.
-3. Create a `.env` file based on `.env.example` and update it with your configuration.
-4. Run `npm start` to launch the Questify app locally.
+3. Run `npm start` to launch the Questify app locally.
 
 ## Usage
 
