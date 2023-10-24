@@ -110,7 +110,7 @@ export const WelcomeFormLabel = styled.p`
     }
 
     @media screen and (min-width: 1200px) {
-        font-size: 24px;
+        font-size: 20px;
         letter-spacing: 0.48px;
     }
 `

@@ -81,62 +81,65 @@ export default function CardItem({ card }) {
     };
 
     return (
-        <Card ref={cardRef} onDoubleClick={() => onCardDoubleClick(card)} key={card._id} disabled={updatingCard !== null && card !== updatingCard} >
-            {/* COMPLETING CARD */}
-            {completingCard !== null && completingCard._id === card._id && (
-                <>
-                    <CardCompletingContainer>
-                        <CardCompletingText>Completed:</CardCompletingText>
-                        <CardCompletingCancelButton onClick={onCancelCompletingClick}>{formatTitleString(card.title)}</CardCompletingCancelButton>
-                    </CardCompletingContainer>
-                    
-                    <svg width="145" height="123">
-                        <use href={sprite + '#icon-award'}></use>
-                    </svg>
+        <>
+            <Card ref={cardRef} data-tooltip-id="edit-quest" data-tooltip-content="Edit quest" onDoubleClick={() => onCardDoubleClick(card)} key={card._id} disabled={updatingCard !== null && card !== updatingCard} >
+                {/* COMPLETING CARD */}
+                {completingCard !== null && completingCard._id === card._id && (
+                    <>
+                        <CardCompletingContainer>
+                            <CardCompletingText>Completed:</CardCompletingText>
+                            <CardCompletingCancelButton onClick={onCancelCompletingClick}>{formatTitleString(card.title)}</CardCompletingCancelButton>
+                        </CardCompletingContainer>
+                        
+                        <svg width="145" height="123">
+                            <use href={sprite + '#icon-award'}></use>
+                        </svg>
 
-                    <CardCompletingButton onClick={(e) => onContinueCompletingClick(e, card._id)}>Continue
-                        <CardCompletingIcon>
-                            <use href={sprite + '#icon-arrow-right'}></use>
-                        </CardCompletingIcon>
-                    </CardCompletingButton>
-                </>
-            )}
+                        <CardCompletingButton onClick={(e) => onContinueCompletingClick(e, card._id)}>Continue
+                            <CardCompletingIcon>
+                                <use href={sprite + '#icon-arrow-right'}></use>
+                            </CardCompletingIcon>
+                        </CardCompletingButton>
+                    </>
+                )}
 
-            {/* UPPDATING CARD */}
-            {isUpdating && <AddCard />}
+                {/* UPPDATING CARD */}
+                {isUpdating && <AddCard />}
 
-            {/* OTHER CARDS */}
-            {!isUpdating && !completingCard && (
-                <>
-                    <CardTopContainer>
-                            <CardDifficulty $text={card.difficulty}>{card.difficulty}</CardDifficulty>
-                            {card.status === 'Complete' && (
-                                <svg width="25" height="25">
-                                    <use href={sprite + '#icon-star'}></use>
-                                </svg>
-                            )}
-                            {card.status === 'Incomplete' && (
-                                <>
-                                    <CardCompleteButton data-tooltip-id="complete-tooltip" data-tooltip-content="Complete quest"  onClick={(e) => onCardCompleteButtonClick(e, card._id)}>
-                                        <svg width="14" height="16">
-                                            <use href={sprite + '#icon-star'}></use>
-                                        </svg>
-                                        <svg width="14" height="16">
-                                            <use href={sprite + '#icon-star2'}></use>
-                                        </svg>
-                                    </CardCompleteButton>
-                                    
-                                    <Tooltip className={css.tooltip} id="complete-tooltip"></Tooltip>
-                                </>
-                            )}
-                    </CardTopContainer>
-                    <CardTitle>{card.title}</CardTitle>
-                    <CardDate>{formatDate(new Date(card.date))}, {card.time}</CardDate>
-                    <CardCategoryContainer $text={card.category}>
-                        <CardCategoryText>{card.category}</CardCategoryText>
-                    </CardCategoryContainer>
-                </>
-            )}
-        </Card>
+                {/* OTHER CARDS */}
+                {!isUpdating && !completingCard && (
+                    <>
+                        <CardTopContainer>
+                                <CardDifficulty $text={card.difficulty}>{card.difficulty}</CardDifficulty>
+                                {card.status === 'Complete' && (
+                                    <svg width="25" height="25">
+                                        <use href={sprite + '#icon-star'}></use>
+                                    </svg>
+                                )}
+                                {card.status === 'Incomplete' && (
+                                    <>
+                                        <CardCompleteButton data-tooltip-place="bottom-center" data-tooltip-id="complete-tooltip" data-tooltip-content="Complete quest"  onClick={(e) => onCardCompleteButtonClick(e, card._id)}>
+                                            <svg width="14" height="16">
+                                                <use href={sprite + '#icon-star'}></use>
+                                            </svg>
+                                            <svg width="14" height="16">
+                                                <use href={sprite + '#icon-star2'}></use>
+                                            </svg>
+                                        </CardCompleteButton>
+                                        
+                                        <Tooltip className={css.tooltip} id="complete-tooltip"></Tooltip>
+                                    </>
+                                )}
+                        </CardTopContainer>
+                        <CardTitle>{card.title}</CardTitle>
+                        <CardDate>{formatDate(new Date(card.date))}, {card.time}</CardDate>
+                        <CardCategoryContainer $text={card.category}>
+                            <CardCategoryText>{card.category}</CardCategoryText>
+                        </CardCategoryContainer>
+                    </>
+                )}
+            </Card>
+            <Tooltip className={css.questTooltip} id="edit-quest"></Tooltip>
+        </>
     );
 }

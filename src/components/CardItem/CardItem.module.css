@@ -1,3 +1,17 @@
+.questTooltip {
+    background-color: #b3b3b3;
+    color: #fff;
+    font-family: 'Helvetica Neue Cyr', sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.28px;
+    display: none;
+    z-index: 1000;
+    transition: all 150ms linear;
+}
+
 .tooltip {
     background-color: #b3b3b3;
     color: #fff;
@@ -9,6 +23,7 @@
     letter-spacing: 0.28px;
     display: none;
     z-index: 1000;
+    transition: all 150ms linear;
 }
 
 .tooltipExit {
@@ -24,10 +39,9 @@
 }
 
 @media screen and (min-width: 768px) {
-    .tooltip {
-        display: block;
-    }
 
+    .questTooltip,
+    .tooltip,
     .tooltipExit {
         display: block;
     }
